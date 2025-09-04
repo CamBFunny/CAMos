@@ -13,5 +13,14 @@ In the early days of the information era, running a computer consumed immense am
 Due to the low power demands and modern processing speeds, computers around the world are doing billions of unecessary calculations every second. Processors are even thinking like humans, but can a human think like a processor?
 CAMos inspires the user to solve problems as if they are the Arithmetic Logic Unit. Each input will be intentional and the GUI will provide immediate results.
 
+# Roadmap
+0.0 // GUI prototype on 320x480 display running in rust in Raspbian (Pi 5)
+0.1 // Hello world kernel
+0.2 // Command line interface shell
+0.3 // GUI implemented on shell
+
+OSdev.org
+https://wiki.osdev.org/Creating_an_Operating_System#Phase_I:_Beginning
+
 # Future Plans
 RusticOS, a rust-based GUI for CAMos on desktop.
