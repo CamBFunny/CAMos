@@ -5,7 +5,7 @@ Computer-and-Man Operating System: Process as one.
 A simple operating system with a human ALU.
 
 ## Slogan
-#Harness electricity to chisel metal.
+# Harness electricity to chisel metal.
 
 ## Mission Statement
 CAMos implementation will return technology to the age where computers were tools and man solved logic.
