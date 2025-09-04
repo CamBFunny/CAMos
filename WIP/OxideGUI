@@ -1,3 +1,49 @@
 // Graphical User Interface for CAMos //
-
 // OxideGUI is the predecessor of RusticGUI I plan to make in the future.
+// https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=7a46eb6210a28dcfc631bd717c7836a0
+
+fn main() {
+
+    // 3.5" touchscreen resolution: 320x480
+    
+    let resolution: (i32, i32) = (320, 480);
+    let width_filetree: i32 = resolution.1*100/425; 
+    let height_banner: i32 = resolution.0/7;
+    let ypos_clock: i32 = resolution.0/2;
+    let width_clock: i32 = resolution.1/4;
+    
+    
+    // Terminal checker
+    println!("GUI resolution:\t{}x{} pixels", resolution.0, resolution.1);
+    println!("File tree width:{} pixels", width_filetree);
+    println!("Banner height:\t{} pixels", height_banner);
+    println!("Clock y-pos:\t{} pixels", ypos_clock);
+    println!("Clock width:\t{} pixels", width_clock);
+    
+
+    // Multiline text example
+    let multiline_string = r#"                               ▒▒▒  ▒▒▒   ▒▒▒                              
+                          ▒▒▒  ▒▓▓▒▒▒▓▓▒▒▒▓▓▒ ▓▒▒▒                         
+                      ▒▒  ▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▓▓▒  ▒▒        *snip* *snip*
+                     ▒▓▓▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▓▒      
+     ▒▒           ▒▒ ▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒  ▒▒        ▒▒▒   ▒▒ 
+  ▒▒  ▒▒▒▒       ▒▓▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒      ▒▒▓▓▒   ▓▒▒
+ ▒▓▒▓ ▒▓▓▓▒       ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒     ▒▓▓▓▓▒  ▒▓▓▒
+▒▓▓▓▒▓▒▓▓▓▒▒  ▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒ ▒▓▓▓▓▒▒▒▓▓▒ 
+ ▒▓▓▓▓▓▓▓▓▓▓   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒  ▓▓▓▓▓▓▓▒▒  
+  ▒▒▒▓▓▓▓▓▓ ▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███▒▒▓▓▓▓▓▓███▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒    
+    ▓▒▓▓▓▒ █▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██░███▒▓▓▓▓██░██▓▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ▓▓▒▒      
+       ▒▓▓▒▓ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█░░░███▒▓▓▒█░░░███▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒        
+        ▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███████▒▓▓▒███████▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓         
+          ▒▓▓▓▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▒██████▒▓▓▓▒█████▓▒▓▓▓▓▓▓▓▓▓▒▒▒▒▒▓▓▓▒        
+        ░▒▓▓▓▓███▓▒▒▒▒▒▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▒▒▒▒▓█████▓▓▓▒▒       
+         ▒▓▓▓▒ ███████▓▒▓▒▒▒▒▒▒▒▒▒▓▓▒█████▒▓▒▒▒▒▒▒▒▒▓▓████  ▓██▒▓▓▒        
+           ▒▓▓▒ ██▓     ████████▓▓▒▒▒▒▒▒▒▒▒▓▓███████▓      ▓▓ ▒▓▓▒         
+            ▒▒▒▒  █▓                                      ▓█  ▒▒▒          
+              ▒▒▒▒ ▓▓                                    ▓▓ ▒▒▒▒           
+                ▒▒▒                                         ▒▒             
+                  ▒                                         ▒          
+"#;
+    println!("\n/// Greetings, Rustacean! ///");
+    println!("{}", multiline_string);
+}
