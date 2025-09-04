@@ -1,5 +1,5 @@
 # CAMos
-# Computer-and-Man Operating System: Process as one.
+## Computer-and-Man Operating System: Process as one.
 A simple operating system with a human ALU.
 
 ## Slogan
