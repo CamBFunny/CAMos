@@ -1,1 +1,2 @@
 place to store notes
+sudo dd bs=4M if=/dev/mmcblk0 of=/path/to/usb/backup.img status=progress
