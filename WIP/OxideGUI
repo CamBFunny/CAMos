@@ -1,5 +1,10 @@
 // Graphical User Interface for CAMos //
 // OxideGUI is the predecessor of RusticGUI I plan to make in the future.
+
+9/5 playground
+https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=3c9fcf693a4193f5dd58ceb8f0f0bf34 
+
+9/4 playground
 // https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=7a46eb6210a28dcfc631bd717c7836a0
 
 fn main() {
