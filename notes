@@ -1,4 +1,1 @@
 place to store notes 
-
-// Backup boot image filepath
-sudo dd bs=4M if=/dev/mmcblk0 of=/path/to/usb/backup.img status=progress
